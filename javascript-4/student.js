@@ -28,10 +28,14 @@ let me = {
   superHeroName: "Super Steve",
   homeTown: "Dana Point",
   superPowers: ["Super Speed", "Super Strength", "Super Good Looks"],
-  superPowerXP: Math.floor(math.random() * 100) + 1,
-  profileImage: `https://randomuser.me/api/portraits/med/lego/${Math.floor(
-    Math.random() * 10
-  ) + 1}.jpg`
+  superPowerXP: function() {
+    return Math.floor(math.random() * 100) + 1;
+  },
+  profileImage: function() {
+    return `https://randomuser.me/api/portraits/med/lego/${Math.floor(
+      Math.random() * 10
+    ) + 1}.jpg`;
+  }
 };
 
 //////////////////Step 3////////////////////
@@ -45,13 +49,13 @@ const homeTown = me.homeTown;
 //Create a function called 'setColor' that takes in one parameter called 'arr' that is an array of colors. Make sure that we only ever have three colors by using splice to trim the array to just 3 colors.
 
 function setColor(arr) {
-  arr.splice(3, 1);
+  arr.splice(0, arr.length - 4);
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === "blue") {
-      return arr[i] === "#4D4DFF";
+    if (i === "blue") {
+      i === "#4D4DFF";
     }
   }
-  background(arr);
+  background(arr[0], arr[1], arr[2]);
 }
 
 // Next, create a for loop to loop over the remaining three colors. If any of the colors is 'blue', change it's value to '#4D4DFF' (which is just a more appealing shade of blue). Outside of the for loop but still inside of setColor, invoke the function called 'background' which will take in three arguments. These arguments should be the three items remaining in your colors array.
@@ -61,7 +65,7 @@ function setColor(arr) {
 
 function setPowers(arr) {
   for (let i = 0; i < arr.length; i++) {
-    return createLi(arr[i]);
+    createLi(i);
   }
 }
 
